@@ -26,7 +26,7 @@ const PORT = process.env.PORT || 5000 ;
 
 app.use(express.static(path.join(__dirname , "public") ))
 
-const server = app.listen(PORT,()=>{
+const server = app.listen(process.env.PORT || 5000 ,()=>{
 
     console.log(`Server running on port  ${PORT} : ${process.env.NODE_ENV}`)
 
