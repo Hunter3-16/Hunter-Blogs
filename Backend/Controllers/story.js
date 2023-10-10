@@ -11,16 +11,15 @@ const addStory = asyncErrorWrapper(async  (req,res,next)=> {
    
     let readtime = Math.floor(wordCount /200)   ;
 
-    const formData = new FormData();
-    formData.append('title' , title)
-    formData.append('content' , content)
-    formData.append('author' , req.user._id)
-    formData.append('image' , req.savedStoryImage)
-    formData.append('readtime' , readtime)
-
 
     try {
-        const newStory = await Story.create(formData)
+        const newStory = await Story.create({
+            title,
+            content,
+            author :req.user._id ,
+            image : req.savedStoryImage,
+            readtime
+        })
 
         return res.status(200).json({
             success :true ,
